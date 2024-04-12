@@ -92,24 +92,25 @@ function App() {
 
   return (
     <>
-      <section className='flex flex-col justify-center items-center w-full gap-8 p-12 mt-32'>
-        <form onSubmit={handleSubmit} className='relative flex flex-row justify-center items-center gap-4 p-12 bg-white/10 font-semibold'>
-          {error && <p className="text-red-500/50 absolute -top-12 text-lg font-normal">{error}</p>}
+      <section className='flex flex-col justify-center items-center w-full gap-8 md:p-12 p-4 mt-32'>
+        <form onSubmit={handleSubmit} className='relative flex md:flex-row flex-col justify-center items-center gap-4 p-12 bg-gray-800/50 outline outline-white outline-1 font-semibold'>
+          {error && <p className="text-red-500/75 absolute md:-top-12 top-3 text-lg font-normal">{error}</p>}
           <div className='flex flex-col gap-4'>
-            <input type="text" name="name" id="name" placeholder='Customer Name' value={formData.name} onChange={handleInputChange} className='py-3 px-5'/>
+            <input type="text" name="name" id="name" maxLength={32} placeholder='Customer Name' value={formData.name} onChange={handleInputChange} className='py-3 px-5'/>
             <input type="number" name="itemList" id="itemList" placeholder='₱' value={formData.itemList} onChange={handleInputChange} className='py-3 px-5'/>
           </div>
-          <div className='flex flex-col gap-4'>
-            <button type="submit" className='p-4 bg-orange-300'>Add Customer</button>
-          </div>
-          <div onClick={toggleSorting} className={`p-4 ${sortingEnabled ? "bg-red-300": "bg-green-300"}`}>
+          <button type="submit" className='p-4 bg-orange-300'>Add Customer</button>
+          <div onClick={toggleSorting} className={`p-4 ${sortingEnabled ? "bg-red-500": "bg-green-300"} cursor-pointer`}>
             {sortingEnabled ? 'Disable Sorting' : 'Enable Sorting'}
           </div>
+
+          <div className='h-full w-full blur-xl bg-white/5 absolute -z-10 top-0 left-0'></div>
+
         </form>
       </section>
 
       <section className='flex flex-col justify-center items-center place-content-center w-full gap-8 p-12'>
-            <motion.div className='flex flex-col gap-2 w-1/2'>
+            <motion.div className='flex flex-col gap-2 md:w-1/2'>
                 {getFilteredAndSortedCustomers().map((customer) => (
                   <CustomerList 
                     key={customer.id} 
