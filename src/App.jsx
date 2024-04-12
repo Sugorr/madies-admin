@@ -46,7 +46,6 @@ function App() {
       };
       setCustomerList([newCustomer, ...customerList]);
     }
-    setFormData({ name: '', itemList: '' });
     setError('');
   };
 
