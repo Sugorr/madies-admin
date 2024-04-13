@@ -92,7 +92,16 @@ function App() {
 
   return (
     <>
-      <section className='flex flex-col justify-center items-center w-full gap-8 md:p-12 p-4 mt-32'>
+      <motion.section
+        initial={{
+          scale: 0,
+          opacity: 0,
+        }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+        }}
+      className='flex flex-col justify-center items-center w-full gap-8 md:p-12 p-4 mt-32'>
         <form onSubmit={handleSubmit} className='relative flex md:flex-row flex-col justify-center items-center gap-4 p-12 bg-gray-800/50 outline outline-blue-300/50 outline-1 font-semibold'>
           {error && <p className="text-red-600/75 absolute md:-top-12 top-3 text-lg font-normal">{error}</p>}
           <div className='flex flex-col gap-4'>
@@ -109,7 +118,7 @@ function App() {
           <div className='h-full w-full blur-xl bg-white/5 absolute -z-10 top-0 left-0'></div>
 
         </form>
-      </section>
+      </motion.section>
 
       <section className='flex flex-col justify-center items-center place-content-center w-full gap-8 p-12'>
             <motion.div className='flex flex-col gap-2 md:w-1/2'>

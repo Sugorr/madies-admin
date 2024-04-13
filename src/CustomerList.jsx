@@ -21,18 +21,33 @@ function CustomerList({ customer, onRemoveCustomer, onRemoveItem }) {
     <>
       <AnimatePresence>
         <motion.div 
-          layout 
+          layout='position'
           layoutId={customer.id}
+          initial={{
+            scaleY: 0,
+            opacity: 0,
+          }}
+          animate={{
+            scaleY: 1,
+            opacity: 1,
+          }}
           className='w-full grid grid-flow-col grid-cols-4 gap-4 backdrop-blur-md bg-gray-800/50 text-white outline outline-1 outline-blue-300/50 p-4'>
           <p className='text-xl font-bold text-left place-self-start w-full overflow-hidden text-wrap truncate ...'>{customer.name}</p>
             <div className='place-self-start'>
                 {customer.itemList.map((item, index) => (
-                  <div key={index} className='flex justify-between items-center'>
+                  <motion.div
+                  initial={{
+                    scaleY: 0,
+                  }}
+                  animate={{
+                    scaleY: 1,
+                  }}
+                  key={index} className='flex justify-between items-center'>
                     <div>
                       <span className='text-orange-300'>₱ </span>
                       {item}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
             </div>
           <div>
