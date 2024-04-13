@@ -1,8 +1,9 @@
 // App.js
 
 import React, { useState } from 'react';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import CustomerList from './CustomerList'; // Import the CustomerList component
+import { SlNote } from "react-icons/sl";
 
 function App() {
   const [customerList, setCustomerList] = useState([]);
@@ -92,16 +93,18 @@ function App() {
   return (
     <>
       <section className='flex flex-col justify-center items-center w-full gap-8 md:p-12 p-4 mt-32'>
-        <form onSubmit={handleSubmit} className='relative flex md:flex-row flex-col justify-center items-center gap-4 p-12 bg-gray-800/50 outline outline-white outline-1 font-semibold'>
-          {error && <p className="text-red-500/75 absolute md:-top-12 top-3 text-lg font-normal">{error}</p>}
+        <form onSubmit={handleSubmit} className='relative flex md:flex-row flex-col justify-center items-center gap-4 p-12 bg-gray-800/50 outline outline-blue-300/50 outline-1 font-semibold'>
+          {error && <p className="text-red-600/75 absolute md:-top-12 top-3 text-lg font-normal">{error}</p>}
           <div className='flex flex-col gap-4'>
             <input type="text" name="name" id="name" maxLength={32} placeholder='Customer Name' value={formData.name} onChange={handleInputChange} className='py-3 px-5'/>
             <input type="number" name="itemList" id="itemList" placeholder='₱' value={formData.itemList} onChange={handleInputChange} className='py-3 px-5'/>
           </div>
           <button type="submit" className='p-4 bg-orange-300'>Add Customer</button>
-          <div onClick={toggleSorting} className={`p-4 ${sortingEnabled ? "bg-red-500": "bg-green-300"} cursor-pointer`}>
-            {sortingEnabled ? 'Disable Sorting' : 'Enable Sorting'}
-          </div>
+            <motion.div
+              layout
+              onClick={toggleSorting} className={`transition-all w-32 text-center p-4 ${sortingEnabled ? "bg-red-500": "bg-green-300"} cursor-pointer`}>
+                {sortingEnabled ? 'Disable' : 'Enable'}
+            </motion.div>
 
           <div className='h-full w-full blur-xl bg-white/5 absolute -z-10 top-0 left-0'></div>
 
