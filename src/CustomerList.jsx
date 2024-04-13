@@ -31,6 +31,10 @@ function CustomerList({ customer, onRemoveCustomer, onRemoveItem }) {
             scaleY: 1,
             opacity: 1,
           }}
+          exit={{
+            opacity: 0,
+            duration: 2,
+          }}
           className='w-full grid grid-flow-col grid-cols-4 gap-4 backdrop-blur-md bg-gray-800/50 text-white outline outline-1 outline-blue-300/50 p-4'>
           <p className='text-xl font-bold text-left place-self-start w-full overflow-hidden text-wrap truncate ...'>{customer.name}</p>
             <div className='place-self-start'>
@@ -58,9 +62,7 @@ function CustomerList({ customer, onRemoveCustomer, onRemoveItem }) {
             Edit
           </button>
         </motion.div>
-      </AnimatePresence>
-
-      <AnimatePresence>
+        
         {selectedId && (
           <motion.div
             className='md:absolute sticky top-0 h-screen inset-0 grid place-items-center z-50'>

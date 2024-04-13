@@ -105,8 +105,14 @@ function App() {
         <form onSubmit={handleSubmit} className='relative flex md:flex-row flex-col justify-center items-center gap-4 p-12 bg-gray-800/50 outline outline-blue-300/50 outline-1 font-semibold'>
           {error && <p className="text-red-600/75 absolute md:-top-12 top-3 text-lg font-normal">{error}</p>}
           <div className='flex flex-col gap-4'>
-            <input type="text" name="name" id="name" maxLength={32} placeholder='Customer Name' value={formData.name} onChange={handleInputChange} className='py-3 px-5'/>
-            <input type="number" name="itemList" id="itemList" placeholder='₱' value={formData.itemList} onChange={handleInputChange} className='py-3 px-5'/>
+            <div className="relative">
+              <input type="text" name="name" id="name" maxLength={32} value={formData.name} onChange={handleInputChange} className='py-2 pt-4 px-5 text-xl focus:outline-none focus:ring-0 focus:border-orange-600 peer' placeholder=" " />
+              <label htmlFor="name" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-orange-600 peer-focus:dark:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Customer Name</label>
+            </div>
+            <div className="relative">
+              <input type="number" name="itemList" id="itemList" max="100000" value={formData.itemList} onChange={handleInputChange} className='py-2 pt-4 px-5 text-xl focus:outline-none focus:ring-0 focus:border-orange-600 peer' placeholder=" " />
+              <label htmlFor="itemList" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-orange-600 peer-focus:dark:text-orange-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Item Cost</label>
+            </div>
           </div>
           <button type="submit" className='p-4 bg-orange-300'>Add Customer</button>
             <motion.div
