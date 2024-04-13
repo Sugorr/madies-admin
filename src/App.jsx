@@ -1,6 +1,6 @@
 // App.js
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import CustomerList from './CustomerList'; // Import the CustomerList component
 import { SlNote } from "react-icons/sl";
@@ -50,6 +50,7 @@ function App() {
     setError('');
   };
 
+
   const toggleSorting = () => {
     setSortingEnabled(!sortingEnabled);
   };
@@ -88,7 +89,10 @@ function App() {
     } else {
       return customerList;
     }
-  };
+  }; 
+
+  customerList.sort((a, b) => a.name.localeCompare(b.name))
+
 
   return (
     <>
